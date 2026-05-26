@@ -7,6 +7,18 @@
 	<version>8.7.3</version>
 	<name>Java Home myweb</name>
 	<url>http://maven.apache.org</url>
+
+	<build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.4.0</version>
+            </plugin>
+
+        </plugins>
+    </build>
 	
 	<properties>
 		<docker.image.prefix>kammana</docker.image.prefix>
