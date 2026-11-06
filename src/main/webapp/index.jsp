@@ -713,4 +713,645 @@
             .hero p { font-size: 15px; }
             .section-header h2 { font-size: 26px; }
             .deal-wrap .deal-content h3 { font-size: 24px; }
-            .deal-wrap .deal-content .price-big { font-size:
+            .deal-wrap .deal-content .price-big { font-size: 28px; }
+            .timer-box { min-width: 58px; padding: 9px 12px; }
+            .timer-box .num { font-size: 20px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+            .brand { font-size: 22px; }
+            .brand i { font-size: 20px; }
+            .search-wrap { min-width: 130px; padding: 0 6px 0 14px; }
+            .search-wrap input { font-size: 13px; padding: 9px 0; }
+            .header-actions .icon-btn { width: 38px; height: 38px; font-size: 15px; }
+            .cart-count { width: 17px; height: 17px; font-size: 9px; }
+            .testimonial-card { flex: 0 0 290px; padding: 22px 24px; }
+            .hero .actions .btn { padding: 12px 22px; font-size: 14px; }
+            .section { padding: 44px 0; }
+            .hero-visual .floating-card { display: none; }
+        }
+
+        @media (max-width: 480px) {
+            .products-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+            .categories-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+            .hero { padding: 32px 0 40px; }
+            .hero h1 { font-size: 28px; }
+            .hero .actions { flex-direction: column; align-items: stretch; }
+            .hero .actions .btn { justify-content: center; }
+            .container { padding: 0 16px; }
+            .hero-text { padding-left: 16px; padding-right: 16px; }
+            .hero-visual { padding-left: 16px; padding-right: 16px; }
+            .deal-wrap .deal-content { padding: 24px 20px; }
+            .deal-wrap .deal-img { flex: 0 0 190px; min-height: 190px; }
+            .newsletter-wrap { padding: 28px 20px; }
+            .newsletter-wrap .text h3 { font-size: 22px; }
+            .product-card .body { padding: 12px 12px 8px; }
+            .product-card .body h5 { font-size: 13px; }
+            .product-card .body .price { font-size: 15px; }
+            .product-card .footer { padding: 0 12px 12px; }
+            .product-card .footer .add-btn { font-size: 12px; padding: 9px; }
+            .timer-box { min-width: 48px; padding: 7px 8px; }
+            .timer-box .num { font-size: 17px; }
+            .timer-box .label { font-size: 8px; }
+            .cat-card { padding: 18px 10px; }
+            .cat-card .icon-wrap { width: 46px; height: 46px; font-size: 18px; border-radius: 14px; }
+            .cat-card h4 { font-size: 12px; }
+            .cat-card .count { font-size: 11px; }
+            .section-header h2 { font-size: 22px; }
+            .testimonial-card { flex: 0 0 260px; padding: 20px 22px; }
+        }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container header-inner">
+            <div style="display:flex;align-items:center;gap:12px;">
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                    <em class="fas fa-bars"></em>
+                </button>
+                <a class="brand" href="#">
+                    <em class="fas fa-leaf"></em>
+                    <span>Morrow<span class="dot">.</span></span>
+                </a>
+            </div>
+
+            <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+                <ul>
+                    <li><a href="#" class="active"><i class="fas fa-house"></i> Home</a></li>
+                    <li><a href="#categories"><i class="fas fa-grid-2"></i> Collections</a></li>
+                    <li><a href="#products"><i class="fas fa-fire"></i> Trending</a></li>
+                    <li><a href="#deals"><i class="fas fa-tag"></i> Offers</a></li>
+                    <li><a href="#testimonials"><i class="fas fa-star"></i> Stories</a></li>
+                </ul>
+            </nav>
+
+            <div style="display:flex;align-items:center;gap:10px;">
+                <div class="search-wrap" role="search">
+                    <input type="search" id="searchInput" placeholder="Search the collection..." aria-label="Search" />
+                    <button id="searchBtn" aria-label="Submit search"><i class="fas fa-magnifying-glass"></i></button>
+                </div>
+
+                <div class="header-actions">
+                    <button class="icon-btn" title="Account" aria-label="Account"><i class="far fa-user"></i></button>
+                    <button class="icon-btn" title="Wishlist" aria-label="Wishlist"><i class="far fa-heart"></i></button>
+                    <div class="cart-wrap">
+                        <button class="icon-btn" id="cartBtn" title="Cart" aria-label="Cart">
+                            <i class="fas fa-bag-shopping"></i>
+                        </button>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu">
+            <div class="container">
+                <ul>
+                    <li><a href="#"><i class="fas fa-house"></i> Home</a></li>
+                    <li><a href="#categories"><i class="fas fa-grid-2"></i> Collections</a></li>
+                    <li><a href="#products"><i class="fas fa-fire"></i> Trending</a></li>
+                    <li><a href="#deals"><i class="fas fa-tag"></i> Offers</a></li>
+                    <li><a href="#testimonials"><i class="fas fa-star"></i> Stories</a></li>
+                    <li><a href="#"><i class="far fa-user"></i> Account</a></li>
+                    <li><a href="#"><i class="far fa-heart"></i> Wishlist</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== MAIN ===== -->
+    <main>
+
+        <!-- HERO – SPLIT -->
+        <section class="hero" aria-label="Hero banner">
+            <div class="hero-text">
+                <div class="eyebrow"><i class="fas fa-seedling"></i> Spring Collection 2026</div>
+                <h1>Thoughtfully made.<br><em>Beautifully lived.</em></h1>
+                <p>Curated essentials for a slower, more intentional everyday. Free shipping on your first order — because good things should arrive effortlessly.</p>
+                <div class="actions">
+                    <button class="btn btn-primary" id="shopNow"><i class="fas fa-arrow-right"></i> Shop the collection</button>
+                    <button class="btn btn-dark" id="exploreDeals"><i class="fas fa-clock"></i> Explore offers</button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="main-img">
+                    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80" alt="Curated lifestyle collection" loading="eager">
+                </div>
+                <div class="floating-card card-1">
+                    <div class="fc-icon"><i class="fas fa-star"></i></div>
+                    <div class="fc-text">
+                        <strong>4.9 rating</strong>
+                        <span>2,400+ reviews</span>
+                    </div>
+                </div>
+                <div class="floating-card card-2">
+                    <div class="fc-icon clay"><i class="fas fa-truck-fast"></i></div>
+                    <div class="fc-text">
+                        <strong>Free shipping</strong>
+                        <span>On orders over $50</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CATEGORIES -->
+        <section class="section" id="categories" aria-labelledby="cat-title">
+            <div class="container">
+                <div class="section-header">
+                    <div class="title-group">
+                        <h2 id="cat-title">Browse collections</h2>
+                        <p>Find your next favorite thing</p>
+                    </div>
+                    <a href="#" class="view-all">All collections <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="categories-grid" id="categoriesGrid" aria-live="polite"></div>
+            </div>
+        </section>
+
+        <!-- PRODUCTS -->
+        <section class="section" id="products" aria-labelledby="prod-title">
+            <div class="container">
+                <div class="section-header">
+                    <div class="title-group">
+                        <h2 id="prod-title">Trending now</h2>
+                        <p>Loved by our community — what's moving this week</p>
+                    </div>
+                    <a href="#" class="view-all">View all <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="products-grid" id="productsGrid" aria-live="polite"></div>
+            </div>
+        </section>
+
+        <!-- DEAL -->
+        <section class="section" id="deals" aria-labelledby="deals-title">
+            <div class="container">
+                <div class="section-header">
+                    <div class="title-group">
+                        <h2 id="deals-title"><i class="fas fa-bolt" style="color:var(--gold);font-size:0.8em;margin-right:6px;"></i> Flash offer</h2>
+                        <p>Limited stock — when it's gone, it's gone</p>
+                    </div>
+                </div>
+                <div class="deal-wrap">
+                    <div class="deal-img">
+                        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80" alt="MacBook Air M2" loading="lazy">
+                        <div class="deal-float"><i class="fas fa-bolt"></i> Limited time</div>
+                    </div>
+                    <div class="deal-content">
+                        <span class="tag"><i class="fas fa-fire"></i> Save 17%</span>
+                        <h3>MacBook Air M2</h3>
+                        <p class="desc">Thin, light, and quietly powerful. The M2 chip makes everyday work feel effortless.</p>
+                        <div>
+                            <span class="price-big">$999 <span class="old">$1,199</span></span>
+                        </div>
+                        <p class="stock">Only <strong>12</strong> left — move quickly</p>
+                        <div class="timer-grid" id="dealTimer">
+                            <div class="timer-box">
+                                <div class="num" id="dealDays">0</div>
+                                <div class="label">Days</div>
+                            </div>
+                            <div class="timer-box">
+                                <div class="num" id="dealHours">00</div>
+                                <div class="label">Hours</div>
+                            </div>
+                            <div class="timer-box">
+                                <div class="num" id="dealMinutes">00</div>
+                                <div class="label">Mins</div>
+                            </div>
+                            <div class="timer-box">
+                                <div class="num" id="dealSeconds">00</div>
+                                <div class="label">Secs</div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" id="buyDeal"><i class="fas fa-cart-plus"></i> Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS -->
+        <section class="section" id="testimonials" aria-labelledby="test-title">
+            <div class="container">
+                <div class="section-header">
+                    <div class="title-group">
+                        <h2 id="test-title">Stories from our community</h2>
+                        <p>Real people, real words</p>
+                    </div>
+                </div>
+                <div class="testimonials-scroll" id="testimonialsList"></div>
+            </div>
+        </section>
+
+        <!-- NEWSLETTER -->
+        <section class="section" aria-labelledby="news-title">
+            <div class="container">
+                <div class="newsletter-wrap">
+                    <div class="text">
+                        <h3 id="news-title">Stay in the loop</h3>
+                        <p>Early access, thoughtful stories & quiet offers — no noise.</p>
+                    </div>
+                    <form id="newsletterForm" onsubmit="return false;">
+                        <input type="email" id="newsletterEmail" placeholder="Your email address" aria-label="Email" required />
+                        <button class="btn" id="subscribeBtn"><i class="fas fa-paper-plane"></i> Subscribe</button>
+                        <div id="newsletterMsg"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="brand-col">
+                    <div class="brand">
+                        <i class="fas fa-leaf"></i>
+                        <span>Morrow<span class="dot">.</span></span>
+                    </div>
+                    <p>A small shop for thoughtful living. Quality goods, carefully chosen, with a gentle footprint.</p>
+                    <div class="socials">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+                <div class="col">
+                    <h5>Shop</h5>
+                    <ul>
+                        <li><a href="#">New arrivals</a></li>
+                        <li><a href="#">Best sellers</a></li>
+                        <li><a href="#">Gift cards</a></li>
+                        <li><a href="#">Journal</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h5>Help</h5>
+                    <ul>
+                        <li><a href="#">Contact us</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h5>About</h5>
+                    <ul>
+                        <li><a href="#">Our story</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; <span id="year"></span> Morrow. All rights reserved. Made with care.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPT ===== -->
+    <script>
+        // ============================================================
+        // DATA
+        // ============================================================
+        const CATEGORIES = [
+            { id: 'phones', name: 'Smartphones', icon: 'fa-mobile-screen', count: 24 },
+            { id: 'laptops', name: 'Laptops', icon: 'fa-laptop', count: 18 },
+            { id: 'clothing', name: 'Clothing', icon: 'fa-shirt', count: 42 },
+            { id: 'gadgets', name: 'Gadgets', icon: 'fa-headphones', count: 31 },
+            { id: 'footwear', name: 'Footwear', icon: 'fa-shoe-prints', count: 27 },
+            { id: 'accessories', name: 'Accessories', icon: 'fa-watch', count: 39 }
+        ];
+
+        const PRODUCTS = [
+            { id: 1, title: 'iPhone 14 Pro Max', price: 1099, oldPrice: 1199, rating: 5, reviews: 128, badge: 'New',
+                img: 'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?auto=format&fit=crop&w=600&q=80',
+                category: 'Smartphones' },
+            { id: 2, title: 'MacBook Pro 14"', price: 1999, rating: 4, reviews: 86, badge: '',
+                img: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=600&q=80',
+                category: 'Laptops' },
+            { id: 3, title: 'Apple Watch Series 8', price: 349, oldPrice: 399, rating: 5, reviews: 214, badge: 'Sale',
+                img: 'https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?auto=format&fit=crop&w=600&q=80',
+                category: 'Accessories' },
+            { id: 4, title: 'Nike Air Max 270', price: 150, rating: 4, reviews: 53, badge: '',
+                img: 'https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=600&q=80',
+                category: 'Footwear' },
+            { id: 5, title: 'Sony A7 IV Camera', price: 2499, rating: 5, reviews: 42, badge: 'New',
+                img: 'https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=600&q=80',
+                category: 'Gadgets' },
+            { id: 6, title: 'Chanel No. 5', price: 120, rating: 5, reviews: 189, badge: '',
+                img: 'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?auto=format&fit=crop&w=600&q=80',
+                category: 'Accessories' },
+            { id: 7, title: 'Travel Backpack', price: 79, oldPrice: 99, rating: 4, reviews: 67, badge: 'Sale',
+                img: 'https://images.unsplash.com/photo-1551232864-3f0890e580d9?auto=format&fit=crop&w=600&q=80',
+                category: 'Accessories' },
+            { id: 8, title: 'Sony WH-1000XM5', price: 399, rating: 5, reviews: 156, badge: '',
+                img: 'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=600&q=80',
+                category: 'Gadgets' }
+        ];
+
+        const TESTIMONIALS = [{
+            name: 'Ava Martin',
+            role: 'Verified buyer',
+            avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=80&q=80',
+            text: 'Fast shipping and genuinely kind support. The product felt even better in person — exceeded every expectation.',
+            stars: 5
+        }, {
+            name: 'Michael Lee',
+            role: 'Frequent shopper',
+            avatar: 'https://images.unsplash.com/photo-1546456073-6712f79251bb?auto=format&fit=crop&w=80&q=80',
+            text: 'Great selection and a checkout that doesn\'t make me think. Will absolutely come back.',
+            stars: 4
+        }, {
+            name: 'Sophia Chen',
+            role: 'Designer',
+            avatar: 'https://images.unsplash.com/photo-1494790108378-be9c29b29330?auto=format&fit=crop&w=80&q=80',
+            text: 'The quality and packaging are quietly beautiful. Everything arrived in perfect condition.',
+            stars: 5
+        }, {
+            name: 'James Wilson',
+            role: 'Tech enthusiast',
+            avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&q=80',
+            text: 'Honestly the best price I found on electronics. The M2 MacBook deal was unbeatable.',
+            stars: 5
+        }];
+
+        // ============================================================
+        // STATE
+        // ============================================================
+        let cartCount = 0;
+
+        // ============================================================
+        // DOM REFS
+        // ============================================================
+        const categoriesGrid = document.getElementById('categoriesGrid');
+        const productsGrid = document.getElementById('productsGrid');
+        const cartCountEl = document.getElementById('cartCount');
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.getElementById('searchBtn');
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const newsletterForm = document.getElementById('newsletterForm');
+        const newsletterEmail = document.getElementById('newsletterEmail');
+        const newsletterMsg = document.getElementById('newsletterMsg');
+        const testimonialsList = document.getElementById('testimonialsList');
+
+        // ============================================================
+        // RENDER
+        // ============================================================
+        function renderCategories() {
+            categoriesGrid.innerHTML = '';
+            CATEGORIES.forEach(cat => {
+                const el = document.createElement('div');
+                el.className = 'cat-card';
+                el.innerHTML = `
+                    <div class="icon-wrap"><i class="fas ${cat.icon}"></i></div>
+                    <h4>${cat.name}</h4>
+                    <div class="count">${cat.count} items</div>
+                `;
+                el.addEventListener('click', () => {
+                    searchInput.value = cat.name;
+                    filterProducts(cat.name);
+                    document.getElementById('products').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+                categoriesGrid.appendChild(el);
+            });
+        }
+
+        function renderProducts(list) {
+            productsGrid.innerHTML = '';
+            if (!list.length) {
+                productsGrid.innerHTML =
+                `<p style="grid-column:1/-1;text-align:center;padding:48px;color:var(--ink-muted);font-size:15px;">No products matched your search.</p>`;
+                return;
+            }
+            list.forEach(p => {
+                const el = document.createElement('article');
+                el.className = 'product-card';
+                const badgeClass = p.badge === 'Sale' ? 'sale' : '';
+                const badgeHtml = p.badge ? `<span class="badge ${badgeClass}">${p.badge}</span>` : '';
+                const oldPriceHtml = p.oldPrice ? `<span class="old-price">$${p.oldPrice.toLocaleString()}</span>` : '';
+                const stars = '★'.repeat(Math.round(p.rating)) + '☆'.repeat(5 - Math.round(p.rating));
+                el.innerHTML = `
+                    <div class="img-wrap">
+                        <img src="${p.img}" alt="${escapeHtml(p.title)}" loading="lazy">
+                        ${badgeHtml}
+                        <button class="wish-btn" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+                    </div>
+                    <div class="body">
+                        <div class="category-tag">${p.category}</div>
+                        <h5>${escapeHtml(p.title)}</h5>
+                        <div class="price-row">
+                            <span class="price">$${p.price.toLocaleString()}</span>
+                            ${oldPriceHtml}
+                        </div>
+                        <div class="rating">
+                            ${stars} <span>(${p.reviews})</span>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <button class="add-btn" data-id="${p.id}"><i class="fas fa-cart-plus"></i> Add</button>
+                    </div>
+                `;
+                productsGrid.appendChild(el);
+            });
+
+            productsGrid.querySelectorAll('.add-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const id = Number(this.dataset.id);
+                    addToCart(id, this);
+                });
+            });
+        }
+
+        function renderTestimonials() {
+            testimonialsList.innerHTML = '';
+            TESTIMONIALS.forEach(t => {
+                const stars = '★'.repeat(t.stars) + '☆'.repeat(5 - t.stars);
+                const el = document.createElement('div');
+                el.className = 'testimonial-card';
+                el.innerHTML = `
+                    <div class="stars">${stars}</div>
+                    <blockquote>“${escapeHtml(t.text)}”</blockquote>
+                    <div class="author">
+                        <img class="avatar" src="${t.avatar}" alt="${escapeHtml(t.name)}" loading="lazy">
+                        <div>
+                            <div class="name">${escapeHtml(t.name)}</div>
+                            <div class="role">${escapeHtml(t.role)}</div>
+                        </div>
+                    </div>
+                `;
+                testimonialsList.appendChild(el);
+            });
+        }
+
+        // ============================================================
+        // UTILITIES
+        // ============================================================
+        function escapeHtml(text) {
+            return String(text).replace(/[&<>"']/g, s => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+            } [s]));
+        }
+
+        function updateCartCount() {
+            cartCountEl.textContent = cartCount;
+            cartCountEl.style.transform = 'scale(1.35)';
+            setTimeout(() => cartCountEl.style.transform = 'scale(1)', 200);
+        }
+
+        function addToCart(productId, btnEl) {
+            const p = PRODUCTS.find(x => x.id === productId);
+            if (!p) return;
+            cartCount++;
+            updateCartCount();
+            if (btnEl) {
+                const orig = btnEl.innerHTML;
+                btnEl.innerHTML = '<i class="fas fa-check"></i> Added';
+                btnEl.classList.add('added');
+                setTimeout(() => {
+                    btnEl.innerHTML = orig;
+                    btnEl.classList.remove('added');
+                }, 1500);
+            }
+            const cartBtn = document.getElementById('cartBtn');
+            cartBtn.style.color = 'var(--clay)';
+            setTimeout(() => cartBtn.style.color = '', 450);
+        }
+
+        function filterProducts(query) {
+            const q = String(query || '').trim().toLowerCase();
+            if (!q) { renderProducts(PRODUCTS); return; }
+            const filtered = PRODUCTS.filter(p =>
+                p.title.toLowerCase().includes(q) || p.category.toLowerCase().includes(q)
+            );
+            renderProducts(filtered);
+        }
+
+        // ============================================================
+        // DEAL TIMER
+        // ============================================================
+        (function setupDealTimer() {
+            const now = new Date();
+            const target = new Date(now.getTime() + (24 * 60 + 36) * 60 * 1000);
+            function tick() {
+                const diff = target - new Date();
+                if (diff <= 0) {
+                    document.getElementById('dealDays').textContent = '0';
+                    document.getElementById('dealHours').textContent = '00';
+                    document.getElementById('dealMinutes').textContent = '00';
+                    document.getElementById('dealSeconds').textContent = '00';
+                    return;
+                }
+                const days = Math.floor(diff / (24 * 3600 * 1000));
+                const hours = Math.floor((diff % (24 * 3600 * 1000)) / (3600 * 1000));
+                const mins = Math.floor((diff % (3600 * 1000)) / (60 * 1000));
+                const secs = Math.floor((diff % (60 * 1000)) / 1000);
+                document.getElementById('dealDays').textContent = days;
+                document.getElementById('dealHours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('dealMinutes').textContent = String(mins).padStart(2, '0');
+                document.getElementById('dealSeconds').textContent = String(secs).padStart(2, '0');
+            }
+            tick();
+            setInterval(tick, 1000);
+        })();
+
+        // ============================================================
+        // EVENT BINDINGS
+        // ============================================================
+        searchBtn.addEventListener('click', () => filterProducts(searchInput.value));
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') filterProducts(e.target.value);
+        });
+
+        mobileToggle.addEventListener('click', () => {
+            const isOpen = mobileMenu.style.display === 'block';
+            mobileMenu.style.display = isOpen ? 'none' : 'block';
+            mobileToggle.innerHTML = isOpen ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.style.display = 'none';
+                mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        document.getElementById('shopNow').addEventListener('click', () => {
+            document.getElementById('products').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+        document.getElementById('exploreDeals').addEventListener('click', () => {
+            document.getElementById('deals').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+
+        document.getElementById('buyDeal').addEventListener('click', function() {
+            cartCount++;
+            updateCartCount();
+            const orig = this.innerHTML;
+            this.innerHTML = '<i class="fas fa-check"></i> Added!';
+            this.style.background = 'var(--sage)';
+            this.style.borderColor = 'var(--sage)';
+            setTimeout(() => {
+                this.innerHTML = orig;
+                this.style.background = '';
+                this.style.borderColor = '';
+            }, 1600);
+        });
+
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = newsletterEmail.value.trim();
+            if (!email || !email.includes('@')) {
+                newsletterMsg.textContent = 'Please enter a valid email address.';
+                newsletterMsg.style.color = '#f0b4a4';
+                newsletterMsg.style.display = 'block';
+                return;
+            }
+            newsletterMsg.textContent = '🌿 Thanks for subscribing — welcome to Morrow.';
+            newsletterMsg.style.color = '#b8d4b4';
+            newsletterMsg.style.display = 'block';
+            newsletterEmail.value = '';
+            setTimeout(() => {
+                newsletterMsg.style.display = 'none';
+            }, 3500);
+        });
+
+        document.getElementById('cartBtn').addEventListener('click', () => {
+            alert(`🛒 Your cart has ${cartCount} item${cartCount !== 1 ? 's' : ''}.`);
+        });
+
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // ============================================================
+        // INIT
+        // ============================================================
+        renderCategories();
+        renderProducts(PRODUCTS);
+        renderTestimonials();
+        updateCartCount();
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                mobileMenu.style.display = 'none';
+                mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+
+        console.log('🌿 Morrow — a calmer commerce experience loaded.');
+    </script>
+
+</body>
+</html>
