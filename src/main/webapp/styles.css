@@ -1,46 +1,13 @@
-
-/* =================================
-   1. GLOBAL STYLES
-================================= */
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
-
-:root {
-  --primary: #ff6f61;
-  --primary-dark: #e94e43;
-  --secondary: #6c63ff;
-  --dark: #171923;
-  --light: #ffffff;
-  --background: #f7f8fc;
-  --text: #333646;
-  --muted: #777b8b;
-  --card-bg: #ffffff;
-  --shadow: 0 10px 35px rgba(0,0,0,0.08);
-  --radius: 16px;
-}
-
-* {
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 85px;
-}
-
-body {
-  font-family: 'Poppins', sans-serif;
-  background: var(--background);
-  color: var(--text);
-  line-height: 1.7;
-  overflow-x: hidden;
-}
-
 h1, h2, h3 {
-  font-weight: 700;
-  line-height: 1.3;
+  color: #333;
 }
 
 a {
@@ -48,701 +15,131 @@ a {
   color: inherit;
 }
 
-img {
-  display: block;
-  max-width: 100%;
-}
-
-button, input, textarea {
-  font-family: inherit;
-}
-
-/* =================================
-   2. BUTTONS
-================================= */
-
 .btn {
   display: inline-block;
-  padding: 14px 32px;
-  background: linear-gradient(
-    135deg,
-    var(--primary),
-    var(--primary-dark)
-  );
+  padding: 10px 20px;
+  background-color: #ff6f61;
   color: white;
-  border-radius: 50px;
-  font-size: 15px;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 8px 20px rgba(255,111,97,0.3);
-  transition: all 0.3s ease;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
 .btn:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(255,111,97,0.4);
+  background-color: #ff4a3d;
 }
 
-/* =================================
-   3. NAVIGATION
-================================= */
-
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 18px 8%;
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(15px);
-  box-shadow: 0 3px 20px rgba(0,0,0,0.05);
-}
-
-.logo {
-  font-size: 27px;
-  font-weight: 800;
-  color: var(--dark);
-}
-
-.logo span {
-  color: var(--primary);
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 35px;
-}
-
-.nav-links a {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text);
-  transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-  color: var(--primary);
-}
-
-.nav-actions {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-
-.theme-btn,
-.menu-btn {
-  border: none;
-  background: #f1f1f5;
-  color: var(--dark);
-  padding: 10px 13px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 18px;
-}
-
-.menu-btn {
-  display: none;
-}
-
-/* =================================
-   4. HERO SECTION
-================================= */
-
+/* Hero Section */
 .hero {
-  min-height: 90vh;
-  position: relative;
+  background-image: url('https://via.placeholder.com/1920x1080');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   text-align: center;
-  padding: 60px 20px;
-  overflow: hidden;
   color: white;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(23,25,35,0.88),
-      rgba(108,99,255,0.65)
-    ),
-    url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1920')
-    center/cover no-repeat;
-}
-
-.hero-content {
-  max-width: 850px;
-  position: relative;
-  z-index: 2;
-  animation: heroAnimation 1.2s ease;
-}
-
-.hero-tag {
-  display: inline-block;
-  padding: 8px 20px;
-  border: 1px solid rgba(255,255,255,0.4);
-  background: rgba(255,255,255,0.1);
-  border-radius: 50px;
-  font-size: 12px;
-  letter-spacing: 3px;
-  margin-bottom: 25px;
 }
 
 .hero-content h1 {
-  font-size: clamp(38px, 6vw, 75px);
-  font-weight: 800;
-  line-height: 1.2;
-  margin-bottom: 25px;
-}
-
-.hero-content h1 span {
-  color: var(--primary);
+  font-size: 3rem;
+  margin-bottom: 10px;
 }
 
 .hero-content p {
-  max-width: 650px;
-  margin: 0 auto 35px;
-  font-size: 18px;
-  color: rgba(255,255,255,0.85);
+  font-size: 1.5rem;
+  margin-bottom: 20px;
 }
 
-.hero-decoration {
-  position: absolute;
-  width: 350px;
-  height: 350px;
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 50%;
-  animation: floating 7s infinite ease-in-out;
-}
-
-/* =================================
-   5. SECTION HEADINGS
-================================= */
-
-.section {
-  padding: 100px 8%;
-}
-
-.section-heading {
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-.section-heading span {
-  color: var(--primary);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 3px;
-}
-
-.section-heading h2 {
-  font-size: 40px;
-  margin: 15px 0;
-  color: var(--text);
-}
-
-.section-heading p {
-  color: var(--muted);
-  font-size: 15px;
-}
-
-/* =================================
-   6. SERVICES
-================================= */
-
+/* Services Section */
 .services {
-  background: var(--background);
+  padding: 50px 20px;
+  text-align: center;
 }
 
 .service-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .card {
-  background: var(--card-bg);
-  border-radius: var(--radius);
+  width: 30%;
+  margin: 20px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: var(--shadow);
-  transition: all 0.4s ease;
-  border: 1px solid rgba(0,0,0,0.03);
-}
-
-.card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 20px 45px rgba(0,0,0,0.12);
 }
 
 .card img {
   width: 100%;
-  height: 230px;
+  height: 200px;
   object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.card:hover img {
-  transform: scale(1.06);
-}
-
-.card-content {
-  padding: 28px;
 }
 
 .card h3 {
-  font-size: 21px;
-  margin-bottom: 12px;
-  color: var(--text);
+  margin: 15px 0;
 }
 
 .card p {
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.8;
-  padding: 0;
+  padding: 0 15px 15px;
 }
 
-.card-link {
-  display: inline-block;
-  color: var(--primary);
-  font-weight: 600;
-  margin-top: 20px;
-  font-size: 14px;
-}
-
-/* =================================
-   7. GALLERY
-================================= */
-
+/* Gallery Section */
 .gallery {
-  background: #eef0f8;
+  padding: 50px 20px;
+  text-align: center;
 }
 
 .gallery-images {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 25px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .gallery-images img {
-  width: 100%;
-  height: 320px;
-  object-fit: cover;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  cursor: pointer;
-  transition: all 0.4s ease;
+  width: 45%;
+  margin: 10px 0;
+  border-radius: 10px;
 }
 
-.gallery-images img:hover {
-  transform: scale(1.025);
-  filter: brightness(0.85);
-}
-
-/* =================================
-   8. TESTIMONIALS
-================================= */
-
-.testimonials {
-  background: var(--background);
-}
-
-.testimonial-card {
-  max-width: 700px;
-  margin: auto;
-  text-align: center;
-  padding: 45px;
-  border-radius: 20px;
-  background: var(--card-bg);
-  box-shadow: var(--shadow);
-}
-
-.stars {
-  color: #ffb400;
-  font-size: 25px;
-  margin-bottom: 20px;
-}
-
-.testimonial-card p {
-  color: var(--muted);
-  font-size: 16px;
-  margin-bottom: 25px;
-}
-
-.testimonial-card h3 {
-  color: var(--text);
-}
-
-.testimonial-card span {
-  color: var(--muted);
-  font-size: 13px;
-}
-
-/* =================================
-   9. CONTACT
-================================= */
-
+/* Contact Section */
 .contact {
-  background: var(--background);
+  padding: 50px 20px;
+  text-align: center;
 }
 
 #contact-form {
-  max-width: 650px;
-  margin: auto;
-  padding: 40px;
-  background: var(--card-bg);
-  border-radius: 20px;
-  box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  gap: 15px;
+  align-items: center;
 }
 
-.form-group {
-  width: 100%;
-  text-align: left;
-}
-
-#contact-form input,
-#contact-form textarea {
-  width: 100%;
-  padding: 16px 20px;
-  border: 1px solid #e0e0e8;
-  border-radius: 10px;
-  outline: none;
-  background: var(--background);
-  color: var(--text);
-  font-size: 14px;
-  transition: all 0.3s ease;
-}
-
-#contact-form input:focus,
-#contact-form textarea:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 4px rgba(255,111,97,0.1);
-}
-
-#contact-form textarea {
-  resize: vertical;
+#contact-form input, #contact-form textarea {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 #contact-form button {
-  align-self: center;
-}
-
-.error {
-  display: block;
-  color: #e04444;
-  font-size: 12px;
-  margin-top: 5px;
-}
-
-#formStatus {
-  text-align: center;
-  color: var(--primary);
-}
-
-/* =================================
-   10. FOOTER
-================================= */
-
-footer {
-  background: var(--dark);
+  padding: 10px 20px;
+  background-color: #ff6f61;
   color: white;
-  text-align: center;
-  padding: 35px 20px;
-  line-height: 2;
-  font-size: 14px;
-}
-
-/* =================================
-   11. WHATSAPP BUTTON
-================================= */
-
-.whatsapp-btn {
-  position: fixed;
-  right: 25px;
-  bottom: 25px;
-  z-index: 999;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #25d366;
-  color: white;
-  font-size: 30px;
-  border-radius: 50%;
-  box-shadow: 0 8px 25px rgba(37,211,102,0.35);
-  transition: 0.3s ease;
-}
-
-.whatsapp-btn:hover {
-  transform: scale(1.15);
-}
-
-/* =================================
-   12. IMAGE LIGHTBOX
-================================= */
-
-.lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 2000;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  padding: 40px;
-  background: rgba(0,0,0,0.95);
-}
-
-.lightbox.active {
-  display: flex;
-}
-
-.lightbox img {
-  max-width: 85%;
-  max-height: 85vh;
-  object-fit: contain;
-  border-radius: 12px;
-}
-
-.lightbox button {
-  position: absolute;
-  color: white;
-  background: transparent;
   border: none;
-  font-size: 35px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
-.lightbox-close {
-  top: 20px;
-  right: 30px;
+#contact-form button:hover {
+  background-color: #ff4a3d;
 }
 
-.lightbox-prev {
-  left: 20px;
-}
-
-.lightbox-next {
-  right: 20px;
-}
-
-/* =================================
-   13. SCROLL ANIMATIONS
-================================= */
-
-.reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* =================================
-   14. DARK MODE
-================================= */
-
-body.dark-mode {
-  --background: #12131a;
-  --text: #f4f4f8;
-  --muted: #b1b3c2;
-  --card-bg: #20212b;
-  --dark: #0d0e14;
-  --shadow: 0 10px 35px rgba(0,0,0,0.3);
-}
-
-body.dark-mode .navbar {
-  background: rgba(25,26,35,0.96);
-}
-
-body.dark-mode .logo,
-body.dark-mode .nav-links a {
-  color: #ffffff;
-}
-
-body.dark-mode .theme-btn,
-body.dark-mode .menu-btn {
-  background: #30313d;
+/* Footer */
+footer {
+  background-color: #333;
   color: white;
-}
-
-body.dark-mode .gallery {
-  background: #1a1b25;
-}
-
-body.dark-mode #contact-form input,
-body.dark-mode #contact-form textarea {
-  border-color: #444552;
-}
-
-body.dark-mode .card {
-  border-color: #30313d;
-}
-
-/* =================================
-   15. ANIMATIONS
-================================= */
-
-@keyframes heroAnimation {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes floating {
-  0%, 100% {
-    transform: translate(0, 0);
-  }
-
-  50% {
-    transform: translate(40px, -30px);
-  }
-}
-
-/* =================================
-   16. RESPONSIVE DESIGN
-================================= */
-
-@media (max-width: 992px) {
-  .service-cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .section {
-    padding: 80px 5%;
-  }
-
-  .navbar {
-    padding: 18px 5%;
-  }
-}
-
-@media (max-width: 768px) {
-  .navbar {
-    padding: 15px 5%;
-  }
-
-  .menu-btn {
-    display: block;
-  }
-
-  .nav-links {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    display: none;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-    padding: 25px 8%;
-    background: var(--card-bg);
-    box-shadow: var(--shadow);
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-
-  .service-cards {
-    grid-template-columns: 1fr;
-  }
-
-  .gallery-images {
-    grid-template-columns: 1fr;
-  }
-
-  .gallery-images img {
-    height: 250px;
-  }
-
-  .hero {
-    min-height: 80vh;
-  }
-
-  .hero-content h1 {
-    font-size: 40px;
-  }
-
-  .hero-content p {
-    font-size: 15px;
-  }
-
-  .section-heading h2 {
-    font-size: 30px;
-  }
-
-  #contact-form {
-    padding: 25px;
-  }
-
-  .testimonial-card {
-    padding: 30px 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .logo {
-    font-size: 22px;
-  }
-
-  .hero-content h1 {
-    font-size: 34px;
-  }
-
-  .hero-tag {
-    font-size: 10px;
-    letter-spacing: 2px;
-  }
-
-  .section {
-    padding: 65px 5%;
-  }
-
-  .section-heading h2 {
-    font-size: 27px;
-  }
-
-  .whatsapp-btn {
-    width: 52px;
-    height: 52px;
-    right: 18px;
-    bottom: 18px;
-  }
-}
-
-/* =================================
-   17. REDUCED MOTION
-================================= */
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
-
-  .reveal {
-    opacity: 1;
-    transform: none;
-  }
+  text-align: center;
+  padding: 20px;
 }
