@@ -10,27 +10,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
 
     <style>
-        /* ========== NEW ROOT – WARM & EARTHY ========== */
+        /* ========== GREEN ROOT ========== */
         :root {
-            --bg: #f8f4ee;
-            --bg-alt: #fffcf8;
+            --bg: #f2f7f2;
+            --bg-alt: #f7fbf7;
             --card: #ffffff;
-            --ink: #2e2b28;
-            --ink-soft: #5c5751;
-            --ink-muted: #9c958c;
-            --clay: #c2795a;
-            --clay-dark: #a85d40;
-            --clay-soft: #f4e3d9;
-            --sage: #6b8f71;
-            --sage-soft: #e3ece4;
-            --sand: #e8dfd4;
-            --gold: #d4a24e;
+            --ink: #1f2e24;
+            --ink-soft: #4a5d4f;
+            --ink-muted: #8a9c8e;
+            --clay: #4a8c5c;
+            --clay-dark: #3a7049;
+            --clay-soft: #e0f0e4;
+            --sage: #6b9f7a;
+            --sage-soft: #e3f0e6;
+            --sand: #d9e8dc;
+            --gold: #5a9e6f;
             --radius: 20px;
             --radius-sm: 12px;
             --radius-xs: 8px;
-            --shadow-sm: 0 1px 4px rgba(46, 43, 40, 0.04);
-            --shadow: 0 6px 28px rgba(46, 43, 40, 0.06);
-            --shadow-lg: 0 16px 56px rgba(46, 43, 40, 0.09);
+            --shadow-sm: 0 1px 4px rgba(31, 46, 36, 0.04);
+            --shadow: 0 6px 28px rgba(31, 46, 36, 0.06);
+            --shadow-lg: 0 16px 56px rgba(31, 46, 36, 0.09);
             --ease: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             --container: 1300px;
         }
@@ -78,14 +78,14 @@
         }
         .btn-primary:hover {
             background: var(--clay-dark); border-color: var(--clay-dark);
-            transform: translateY(-2px); box-shadow: 0 10px 30px rgba(194, 121, 90, 0.28);
+            transform: translateY(-2px); box-shadow: 0 10px 30px rgba(74, 140, 92, 0.28);
         }
         .btn-dark {
             background: var(--ink); color: #fff; border-color: var(--ink);
         }
         .btn-dark:hover {
-            background: #1f1d1b; border-color: #1f1d1b;
-            transform: translateY(-2px); box-shadow: 0 10px 28px rgba(46, 43, 40, 0.22);
+            background: #16231b; border-color: #16231b;
+            transform: translateY(-2px); box-shadow: 0 10px 28px rgba(31, 46, 36, 0.22);
         }
         .btn-ghost-light {
             background: rgba(255,255,255,0.10); color: #fff;
@@ -100,16 +100,16 @@
             background: var(--sage); color: #fff; border-color: var(--sage);
         }
         .btn-sage:hover {
-            background: #5a7d60; border-color: #5a7d60;
-            transform: translateY(-2px); box-shadow: 0 8px 24px rgba(107, 143, 113, 0.25);
+            background: #5a8f6a; border-color: #5a8f6a;
+            transform: translateY(-2px); box-shadow: 0 8px 24px rgba(107, 159, 122, 0.25);
         }
 
         /* ========== HEADER ========== */
         header {
             position: sticky; top: 0; z-index: 100;
-            background: rgba(248, 244, 238, 0.86);
+            background: rgba(242, 247, 242, 0.86);
             backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
-            border-bottom: 1px solid rgba(46, 43, 40, 0.04);
+            border-bottom: 1px solid rgba(31, 46, 36, 0.04);
         }
         .header-inner {
             display: flex; align-items: center; justify-content: space-between;
@@ -181,7 +181,7 @@
         }
         .search-wrap:focus-within {
             border-color: var(--clay);
-            box-shadow: 0 0 0 4px rgba(194, 121, 90, 0.10);
+            box-shadow: 0 0 0 4px rgba(74, 140, 92, 0.10);
         }
         .search-wrap input {
             border: 0; background: transparent; outline: none;
@@ -239,7 +239,7 @@
         .hero::before {
             content: '';
             position: absolute; inset: 0;
-            background: radial-gradient(ellipse at 75% 40%, rgba(194, 121, 90, 0.07) 0%, transparent 60%);
+            background: radial-gradient(ellipse at 75% 40%, rgba(74, 140, 92, 0.07) 0%, transparent 60%);
             pointer-events: none;
         }
         .hero .container { display: contents; }
@@ -415,7 +415,7 @@
             font-size: 11px; font-weight: 700; letter-spacing: 0.4px;
         }
         .product-card .badge.sale {
-            background: var(--gold); color: var(--ink);
+            background: var(--gold); color: #fff;
         }
         .product-card .wish-btn {
             position: absolute; top: 14px; right: 14px;
@@ -488,7 +488,7 @@
             padding: 8px 20px; border-radius: 999px;
             font-weight: 700; font-size: 13px;
             display: flex; align-items: center; gap: 8px;
-            box-shadow: 0 8px 24px rgba(194, 121, 90, 0.35);
+            box-shadow: 0 8px 24px rgba(74, 140, 92, 0.35);
         }
         .deal-wrap .deal-content {
             flex: 1; padding: 44px 48px;
@@ -496,7 +496,7 @@
         }
         .deal-wrap .deal-content .tag {
             display: inline-flex; align-items: center; gap: 6px;
-            background: var(--gold); color: var(--ink);
+            background: var(--gold); color: #fff;
             padding: 5px 16px; border-radius: 999px;
             font-size: 12px; font-weight: 700;
             text-transform: uppercase; letter-spacing: 0.6px;
@@ -593,7 +593,7 @@
             content: ''; position: absolute;
             top: -80px; right: -60px;
             width: 280px; height: 280px; border-radius: 50%;
-            background: radial-gradient(circle, rgba(194,121,90,0.25) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(74,140,92,0.25) 0%, transparent 70%);
             pointer-events: none;
         }
         .newsletter-wrap .text { position: relative; z-index: 1; }
@@ -631,7 +631,7 @@
         /* ========== FOOTER ========== */
         footer {
             margin-top: 24px; padding: 56px 0 32px;
-            border-top: 1px solid rgba(46, 43, 40, 0.06);
+            border-top: 1px solid rgba(31, 46, 36, 0.06);
         }
         .footer-grid {
             display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -669,7 +669,7 @@
         .footer-grid .col ul li a:hover { color: var(--clay); }
         .footer-bottom {
             text-align: center; padding-top: 24px;
-            border-top: 1px solid rgba(46, 43, 40, 0.06);
+            border-top: 1px solid rgba(31, 46, 36, 0.06);
             color: var(--ink-muted); font-size: 13px;
         }
 
@@ -1316,12 +1316,12 @@
             const email = newsletterEmail.value.trim();
             if (!email || !email.includes('@')) {
                 newsletterMsg.textContent = 'Please enter a valid email address.';
-                newsletterMsg.style.color = '#f0b4a4';
+                newsletterMsg.style.color = '#a4d4b4';
                 newsletterMsg.style.display = 'block';
                 return;
             }
             newsletterMsg.textContent = '🌿 Thanks for subscribing — welcome to Morrow.';
-            newsletterMsg.style.color = '#b8d4b4';
+            newsletterMsg.style.color = '#b4d4b8';
             newsletterMsg.style.display = 'block';
             newsletterEmail.value = '';
             setTimeout(() => {
@@ -1350,7 +1350,7 @@
             }
         });
 
-        console.log('🌿 Morrow — a calmer commerce experience loaded.');
+        console.log('🌿 Morrow — a calmer commerce experience loaded (green edition).');
     </script>
 
 </body>
