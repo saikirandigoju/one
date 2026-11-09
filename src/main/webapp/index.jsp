@@ -66,6 +66,159 @@
         .muted { color: var(--ink-muted); }
         .text-center { text-align: center; }
 
+        /* ========== LOGIN GATE ========== */
+        #loginGate {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: grid;
+            place-items: center;
+            background:
+                radial-gradient(ellipse at 30% 20%, rgba(74, 140, 92, 0.18) 0%, transparent 55%),
+                radial-gradient(ellipse at 80% 90%, rgba(107, 159, 122, 0.16) 0%, transparent 55%),
+                var(--bg);
+            padding: 24px;
+        }
+        #loginGate .login-card {
+            width: 100%;
+            max-width: 420px;
+            background: var(--card);
+            border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+            padding: 44px 38px 36px;
+            position: relative;
+            overflow: hidden;
+            animation: loginIn 0.5s var(--ease);
+        }
+        #loginGate .login-card::before {
+            content: '';
+            position: absolute;
+            top: -60px; right: -60px;
+            width: 180px; height: 180px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(74,140,92,0.14) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        @keyframes loginIn {
+            from { opacity: 0; transform: translateY(18px) scale(0.98); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        #loginGate .login-brand {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            font-family: 'DM Serif Display', serif;
+            font-size: 32px; font-weight: 400; letter-spacing: -0.5px;
+            color: var(--ink); margin-bottom: 6px;
+        }
+        #loginGate .login-brand i { font-size: 28px; color: var(--clay); }
+        #loginGate .login-brand .dot { color: var(--clay); }
+        #loginGate .login-sub {
+            text-align: center;
+            color: var(--ink-soft);
+            font-size: 14px;
+            margin-bottom: 28px;
+        }
+        #loginGate .field {
+            margin-bottom: 16px;
+        }
+        #loginGate .field label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--ink-soft);
+            margin-bottom: 7px;
+        }
+        #loginGate .field .input-wrap {
+            display: flex; align-items: center; gap: 10px;
+            background: var(--bg-alt);
+            border: 1.5px solid var(--sand);
+            border-radius: var(--radius-sm);
+            padding: 0 16px;
+            transition: var(--ease);
+        }
+        #loginGate .field .input-wrap:focus-within {
+            border-color: var(--clay);
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(74, 140, 92, 0.10);
+        }
+        #loginGate .field .input-wrap i {
+            color: var(--ink-muted);
+            font-size: 15px;
+            flex-shrink: 0;
+        }
+        #loginGate .field input {
+            flex: 1;
+            border: 0;
+            background: transparent;
+            outline: none;
+            padding: 13px 0;
+            font-size: 15px;
+            color: var(--ink);
+        }
+        #loginGate .field input::placeholder { color: var(--ink-muted); }
+        #loginGate .toggle-pw {
+            padding: 8px;
+            color: var(--ink-muted);
+            font-size: 14px;
+            border-radius: 50%;
+            transition: var(--ease);
+        }
+        #loginGate .toggle-pw:hover { color: var(--clay); }
+
+        #loginGate .login-btn {
+            width: 100%;
+            margin-top: 8px;
+            padding: 15px;
+            border-radius: 999px;
+            background: var(--clay);
+            color: #fff;
+            font-weight: 700;
+            font-size: 15px;
+            letter-spacing: 0.2px;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            transition: var(--ease);
+            border: 2px solid var(--clay);
+        }
+        #loginGate .login-btn:hover {
+            background: var(--clay-dark);
+            border-color: var(--clay-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(74, 140, 92, 0.30);
+        }
+
+        #loginError {
+            display: none;
+            margin-top: 14px;
+            padding: 11px 16px;
+            border-radius: var(--radius-xs);
+            background: #fdecea;
+            color: #b3402f;
+            font-size: 13px;
+            font-weight: 600;
+            text-align: center;
+            animation: shake 0.35s var(--ease);
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        #loginGate .login-hint {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--ink-muted);
+            line-height: 1.6;
+            border-top: 1px solid var(--sand);
+            padding-top: 16px;
+        }
+        #loginGate .login-hint strong { color: var(--clay-dark); }
+
+        /* Hidden content until logged in */
+        #siteContent { display: none; }
+        #siteContent.visible { display: block; }
+
         /* ========== BUTTONS ========== */
         .btn {
             display: inline-flex; align-items: center; justify-content: center;
@@ -727,6 +880,7 @@
             .hero .actions .btn { padding: 12px 22px; font-size: 14px; }
             .section { padding: 44px 0; }
             .hero-visual .floating-card { display: none; }
+            #loginGate .login-card { padding: 32px 24px 28px; }
         }
 
         @media (max-width: 480px) {
@@ -771,260 +925,360 @@
 
 <body>
 
-    <!-- ===== HEADER ===== -->
-    <header>
-        <div class="container header-inner">
-            <div style="display:flex;align-items:center;gap:12px;">
-                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
-                    <em class="fas fa-bars"></em>
-                </button>
-                <a class="brand" href="#">
-                    <em class="fas fa-leaf"></em>
-                    <span>Morrow<span class="dot">.</span></span>
-                </a>
+    <!-- ===== LOGIN GATE ===== -->
+    <div id="loginGate">
+        <div class="login-card">
+            <div class="login-brand">
+                <i class="fas fa-leaf"></i>
+                <span>Morrow<span class="dot">.</span></span>
             </div>
+            <p class="login-sub">Welcome back — please sign in to continue</p>
 
-            <nav class="main-nav" id="mainNav" aria-label="Main navigation">
-                <ul>
-                    <li><a href="#" class="active"><i class="fas fa-house"></i> Home</a></li>
-                    <li><a href="#categories"><i class="fas fa-grid-2"></i> Collections</a></li>
-                    <li><a href="#products"><i class="fas fa-fire"></i> Trending</a></li>
-                    <li><a href="#deals"><i class="fas fa-tag"></i> Offers</a></li>
-                    <li><a href="#testimonials"><i class="fas fa-star"></i> Stories</a></li>
-                </ul>
-            </nav>
-
-            <div style="display:flex;align-items:center;gap:10px;">
-                <div class="search-wrap" role="search">
-                    <input type="search" id="searchInput" placeholder="Search the collection..." aria-label="Search" />
-                    <button id="searchBtn" aria-label="Submit search"><i class="fas fa-magnifying-glass"></i></button>
+            <form id="loginForm" autocomplete="off">
+                <div class="field">
+                    <label for="loginUser">Username</label>
+                    <div class="input-wrap">
+                        <i class="far fa-user"></i>
+                        <input type="text" id="loginUser" placeholder="Enter your username" required autocomplete="username" />
+                    </div>
                 </div>
 
-                <div class="header-actions">
-                    <button class="icon-btn" title="Account" aria-label="Account"><i class="far fa-user"></i></button>
-                    <button class="icon-btn" title="Wishlist" aria-label="Wishlist"><i class="far fa-heart"></i></button>
-                    <div class="cart-wrap">
-                        <button class="icon-btn" id="cartBtn" title="Cart" aria-label="Cart">
-                            <i class="fas fa-bag-shopping"></i>
+                <div class="field">
+                    <label for="loginPass">Password</label>
+                    <div class="input-wrap">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="loginPass" placeholder="Enter your password" required autocomplete="current-password" />
+                        <button type="button" class="toggle-pw" id="togglePw" aria-label="Show password">
+                            <i class="far fa-eye"></i>
                         </button>
-                        <span class="cart-count" id="cartCount">0</span>
                     </div>
                 </div>
+
+                <button type="submit" class="login-btn">
+                    <i class="fas fa-arrow-right-to-bracket"></i> Sign in
+                </button>
+
+                <div id="loginError"></div>
+            </form>
+
+            <div class="login-hint">
+                Demo credentials — <strong>saikiran</strong> / <strong>12345</strong>
             </div>
         </div>
+    </div>
 
-        <!-- Mobile Menu -->
-        <div id="mobileMenu">
-            <div class="container">
-                <ul>
-                    <li><a href="#"><i class="fas fa-house"></i> Home</a></li>
-                    <li><a href="#categories"><i class="fas fa-grid-2"></i> Collections</a></li>
-                    <li><a href="#products"><i class="fas fa-fire"></i> Trending</a></li>
-                    <li><a href="#deals"><i class="fas fa-tag"></i> Offers</a></li>
-                    <li><a href="#testimonials"><i class="fas fa-star"></i> Stories</a></li>
-                    <li><a href="#"><i class="far fa-user"></i> Account</a></li>
-                    <li><a href="#"><i class="far fa-heart"></i> Wishlist</a></li>
-                </ul>
-            </div>
-        </div>
-    </header>
+    <!-- ===== SITE CONTENT (hidden until login) ===== -->
+    <div id="siteContent">
 
-    <!-- ===== MAIN ===== -->
-    <main>
-
-        <!-- HERO – SPLIT -->
-        <section class="hero" aria-label="Hero banner">
-            <div class="hero-text">
-                <div class="eyebrow"><i class="fas fa-seedling"></i> Spring Collection 2026</div>
-                <h1>Thoughtfully made.<br><em>Beautifully lived.</em></h1>
-                <p>Curated essentials for a slower, more intentional everyday. Free shipping on your first order — because good things should arrive effortlessly.</p>
-                <div class="actions">
-                    <button class="btn btn-primary" id="shopNow"><i class="fas fa-arrow-right"></i> Shop the collection</button>
-                    <button class="btn btn-dark" id="exploreDeals"><i class="fas fa-clock"></i> Explore offers</button>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="main-img">
-                    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80" alt="Curated lifestyle collection" loading="eager">
-                </div>
-                <div class="floating-card card-1">
-                    <div class="fc-icon"><i class="fas fa-star"></i></div>
-                    <div class="fc-text">
-                        <strong>4.9 rating</strong>
-                        <span>2,400+ reviews</span>
-                    </div>
-                </div>
-                <div class="floating-card card-2">
-                    <div class="fc-icon clay"><i class="fas fa-truck-fast"></i></div>
-                    <div class="fc-text">
-                        <strong>Free shipping</strong>
-                        <span>On orders over $50</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CATEGORIES -->
-        <section class="section" id="categories" aria-labelledby="cat-title">
-            <div class="container">
-                <div class="section-header">
-                    <div class="title-group">
-                        <h2 id="cat-title">Browse collections</h2>
-                        <p>Find your next favorite thing</p>
-                    </div>
-                    <a href="#" class="view-all">All collections <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="categories-grid" id="categoriesGrid" aria-live="polite"></div>
-            </div>
-        </section>
-
-        <!-- PRODUCTS -->
-        <section class="section" id="products" aria-labelledby="prod-title">
-            <div class="container">
-                <div class="section-header">
-                    <div class="title-group">
-                        <h2 id="prod-title">Trending now</h2>
-                        <p>Loved by our community — what's moving this week</p>
-                    </div>
-                    <a href="#" class="view-all">View all <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="products-grid" id="productsGrid" aria-live="polite"></div>
-            </div>
-        </section>
-
-        <!-- DEAL -->
-        <section class="section" id="deals" aria-labelledby="deals-title">
-            <div class="container">
-                <div class="section-header">
-                    <div class="title-group">
-                        <h2 id="deals-title"><i class="fas fa-bolt" style="color:var(--gold);font-size:0.8em;margin-right:6px;"></i> Flash offer</h2>
-                        <p>Limited stock — when it's gone, it's gone</p>
-                    </div>
-                </div>
-                <div class="deal-wrap">
-                    <div class="deal-img">
-                        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80" alt="MacBook Air M2" loading="lazy">
-                        <div class="deal-float"><i class="fas fa-bolt"></i> Limited time</div>
-                    </div>
-                    <div class="deal-content">
-                        <span class="tag"><i class="fas fa-fire"></i> Save 17%</span>
-                        <h3>MacBook Air M2</h3>
-                        <p class="desc">Thin, light, and quietly powerful. The M2 chip makes everyday work feel effortless.</p>
-                        <div>
-                            <span class="price-big">$999 <span class="old">$1,199</span></span>
-                        </div>
-                        <p class="stock">Only <strong>12</strong> left — move quickly</p>
-                        <div class="timer-grid" id="dealTimer">
-                            <div class="timer-box">
-                                <div class="num" id="dealDays">0</div>
-                                <div class="label">Days</div>
-                            </div>
-                            <div class="timer-box">
-                                <div class="num" id="dealHours">00</div>
-                                <div class="label">Hours</div>
-                            </div>
-                            <div class="timer-box">
-                                <div class="num" id="dealMinutes">00</div>
-                                <div class="label">Mins</div>
-                            </div>
-                            <div class="timer-box">
-                                <div class="num" id="dealSeconds">00</div>
-                                <div class="label">Secs</div>
-                            </div>
-                        </div>
-                        <button class="btn btn-primary" id="buyDeal"><i class="fas fa-cart-plus"></i> Add to cart</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- TESTIMONIALS -->
-        <section class="section" id="testimonials" aria-labelledby="test-title">
-            <div class="container">
-                <div class="section-header">
-                    <div class="title-group">
-                        <h2 id="test-title">Stories from our community</h2>
-                        <p>Real people, real words</p>
-                    </div>
-                </div>
-                <div class="testimonials-scroll" id="testimonialsList"></div>
-            </div>
-        </section>
-
-        <!-- NEWSLETTER -->
-        <section class="section" aria-labelledby="news-title">
-            <div class="container">
-                <div class="newsletter-wrap">
-                    <div class="text">
-                        <h3 id="news-title">Stay in the loop</h3>
-                        <p>Early access, thoughtful stories & quiet offers — no noise.</p>
-                    </div>
-                    <form id="newsletterForm" onsubmit="return false;">
-                        <input type="email" id="newsletterEmail" placeholder="Your email address" aria-label="Email" required />
-                        <button class="btn" id="subscribeBtn"><i class="fas fa-paper-plane"></i> Subscribe</button>
-                        <div id="newsletterMsg"></div>
-                    </form>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- ===== FOOTER ===== -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="brand-col">
-                    <div class="brand">
-                        <i class="fas fa-leaf"></i>
+        <!-- ===== HEADER ===== -->
+        <header>
+            <div class="container header-inner">
+                <div style="display:flex;align-items:center;gap:12px;">
+                    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                        <em class="fas fa-bars"></em>
+                    </button>
+                    <a class="brand" href="#">
+                        <em class="fas fa-leaf"></em>
                         <span>Morrow<span class="dot">.</span></span>
-                    </div>
-                    <p>A small shop for thoughtful living. Quality goods, carefully chosen, with a gentle footprint.</p>
-                    <div class="socials">
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
-                    </div>
+                    </a>
                 </div>
-                <div class="col">
-                    <h5>Shop</h5>
+
+                <nav class="main-nav" id="mainNav" aria-label="Main navigation">
                     <ul>
-                        <li><a href="#">New arrivals</a></li>
-                        <li><a href="#">Best sellers</a></li>
-                        <li><a href="#">Gift cards</a></li>
-                        <li><a href="#">Journal</a></li>
+                        <li><a href="#" class="active"><i class="fas fa-house"></i> Home</a></li>
+                        <li><a href="#categories"><i class="fas fa-grid-2"></i> Collections</a></li>
+                        <li><a href="#products"><i class="fas fa-fire"></i> Trending</a></li>
+                        <li><a href="#deals"><i class="fas fa-tag"></i> Offers</a></li>
+                        <li><a href="#testimonials"><i class="fas fa-star"></i> Stories</a></li>
                     </ul>
+                </nav>
+
+                <div style="display:flex;align-items:center;gap:10px;">
+                    <div class="search-wrap" role="search">
+                        <input type="search" id="searchInput" placeholder="Search the collection..." aria-label="Search" />
+                        <button id="searchBtn" aria-label="Submit search"><i class="fas fa-magnifying-glass"></i></button>
+                    </div>
+
+                    <div class="header-actions">
+                        <button class="icon-btn" title="Account" aria-label="Account"><i class="far fa-user"></i></button>
+                        <button class="icon-btn" title="Wishlist" aria-label="Wishlist"><i class="far fa-heart"></i></button>
+                        <div class="cart-wrap">
+                            <button class="icon-btn" id="cartBtn" title="Cart" aria-label="Cart">
+                                <i class="fas fa-bag-shopping"></i>
+                            </button>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="col">
-                    <h5>Help</h5>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu">
+                <div class="container">
                     <ul>
-                        <li><a href="#">Contact us</a></li>
-                        <li><a href="#">Shipping</a></li>
-                        <li><a href="#">Returns</a></li>
-                        <li><a href="#">FAQ</a></li>
-                    </ul>
-                </div>
-                <div class="col">
-                    <h5>About</h5>
-                    <ul>
-                        <li><a href="#">Our story</a></li>
-                        <li><a href="#">Sustainability</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#"><i class="fas fa-house"></i> Home</a></li>
+                        <li><a href="#categories"><i class="fas fa-grid-2"></i> Collections</a></li>
+                        <li><a href="#products"><i class="fas fa-fire"></i> Trending</a></li>
+                        <li><a href="#deals"><i class="fas fa-tag"></i> Offers</a></li>
+                        <li><a href="#testimonials"><i class="fas fa-star"></i> Stories</a></li>
+                        <li><a href="#"><i class="far fa-user"></i> Account</a></li>
+                        <li><a href="#"><i class="far fa-heart"></i> Wishlist</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                &copy; <span id="year"></span> Morrow. All rights reserved. Made with care.
+        </header>
+
+        <!-- ===== MAIN ===== -->
+        <main>
+
+            <!-- HERO – SPLIT -->
+            <section class="hero" aria-label="Hero banner">
+                <div class="hero-text">
+                    <div class="eyebrow"><i class="fas fa-seedling"></i> Spring Collection 2026</div>
+                    <h1>Thoughtfully made.<br><em>Beautifully lived.</em></h1>
+                    <p>Curated essentials for a slower, more intentional everyday. Free shipping on your first order — because good things should arrive effortlessly.</p>
+                    <div class="actions">
+                        <button class="btn btn-primary" id="shopNow"><i class="fas fa-arrow-right"></i> Shop the collection</button>
+                        <button class="btn btn-dark" id="exploreDeals"><i class="fas fa-clock"></i> Explore offers</button>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="main-img">
+                        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80" alt="Curated lifestyle collection" loading="eager">
+                    </div>
+                    <div class="floating-card card-1">
+                        <div class="fc-icon"><i class="fas fa-star"></i></div>
+                        <div class="fc-text">
+                            <strong>4.9 rating</strong>
+                            <span>2,400+ reviews</span>
+                        </div>
+                    </div>
+                    <div class="floating-card card-2">
+                        <div class="fc-icon clay"><i class="fas fa-truck-fast"></i></div>
+                        <div class="fc-text">
+                            <strong>Free shipping</strong>
+                            <span>On orders over $50</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CATEGORIES -->
+            <section class="section" id="categories" aria-labelledby="cat-title">
+                <div class="container">
+                    <div class="section-header">
+                        <div class="title-group">
+                            <h2 id="cat-title">Browse collections</h2>
+                            <p>Find your next favorite thing</p>
+                        </div>
+                        <a href="#" class="view-all">All collections <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="categories-grid" id="categoriesGrid" aria-live="polite"></div>
+                </div>
+            </section>
+
+            <!-- PRODUCTS -->
+            <section class="section" id="products" aria-labelledby="prod-title">
+                <div class="container">
+                    <div class="section-header">
+                        <div class="title-group">
+                            <h2 id="prod-title">Trending now</h2>
+                            <p>Loved by our community — what's moving this week</p>
+                        </div>
+                        <a href="#" class="view-all">View all <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="products-grid" id="productsGrid" aria-live="polite"></div>
+                </div>
+            </section>
+
+            <!-- DEAL -->
+            <section class="section" id="deals" aria-labelledby="deals-title">
+                <div class="container">
+                    <div class="section-header">
+                        <div class="title-group">
+                            <h2 id="deals-title"><i class="fas fa-bolt" style="color:var(--gold);font-size:0.8em;margin-right:6px;"></i> Flash offer</h2>
+                            <p>Limited stock — when it's gone, it's gone</p>
+                        </div>
+                    </div>
+                    <div class="deal-wrap">
+                        <div class="deal-img">
+                            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80" alt="MacBook Air M2" loading="lazy">
+                            <div class="deal-float"><i class="fas fa-bolt"></i> Limited time</div>
+                        </div>
+                        <div class="deal-content">
+                            <span class="tag"><i class="fas fa-fire"></i> Save 17%</span>
+                            <h3>MacBook Air M2</h3>
+                            <p class="desc">Thin, light, and quietly powerful. The M2 chip makes everyday work feel effortless.</p>
+                            <div>
+                                <span class="price-big">$999 <span class="old">$1,199</span></span>
+                            </div>
+                            <p class="stock">Only <strong>12</strong> left — move quickly</p>
+                            <div class="timer-grid" id="dealTimer">
+                                <div class="timer-box">
+                                    <div class="num" id="dealDays">0</div>
+                                    <div class="label">Days</div>
+                                </div>
+                                <div class="timer-box">
+                                    <div class="num" id="dealHours">00</div>
+                                    <div class="label">Hours</div>
+                                </div>
+                                <div class="timer-box">
+                                    <div class="num" id="dealMinutes">00</div>
+                                    <div class="label">Mins</div>
+                                </div>
+                                <div class="timer-box">
+                                    <div class="num" id="dealSeconds">00</div>
+                                    <div class="label">Secs</div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary" id="buyDeal"><i class="fas fa-cart-plus"></i> Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TESTIMONIALS -->
+            <section class="section" id="testimonials" aria-labelledby="test-title">
+                <div class="container">
+                    <div class="section-header">
+                        <div class="title-group">
+                            <h2 id="test-title">Stories from our community</h2>
+                            <p>Real people, real words</p>
+                        </div>
+                    </div>
+                    <div class="testimonials-scroll" id="testimonialsList"></div>
+                </div>
+            </section>
+
+            <!-- NEWSLETTER -->
+            <section class="section" aria-labelledby="news-title">
+                <div class="container">
+                    <div class="newsletter-wrap">
+                        <div class="text">
+                            <h3 id="news-title">Stay in the loop</h3>
+                            <p>Early access, thoughtful stories & quiet offers — no noise.</p>
+                        </div>
+                        <form id="newsletterForm" onsubmit="return false;">
+                            <input type="email" id="newsletterEmail" placeholder="Your email address" aria-label="Email" required />
+                            <button class="btn" id="subscribeBtn"><i class="fas fa-paper-plane"></i> Subscribe</button>
+                            <div id="newsletterMsg"></div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- ===== FOOTER ===== -->
+        <footer>
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="brand-col">
+                        <div class="brand">
+                            <i class="fas fa-leaf"></i>
+                            <span>Morrow<span class="dot">.</span></span>
+                        </div>
+                        <p>A small shop for thoughtful living. Quality goods, carefully chosen, with a gentle footprint.</p>
+                        <div class="socials">
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <h5>Shop</h5>
+                        <ul>
+                            <li><a href="#">New arrivals</a></li>
+                            <li><a href="#">Best sellers</a></li>
+                            <li><a href="#">Gift cards</a></li>
+                            <li><a href="#">Journal</a></li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <h5>Help</h5>
+                        <ul>
+                            <li><a href="#">Contact us</a></li>
+                            <li><a href="#">Shipping</a></li>
+                            <li><a href="#">Returns</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <h5>About</h5>
+                        <ul>
+                            <li><a href="#">Our story</a></li>
+                            <li><a href="#">Sustainability</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Privacy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    &copy; <span id="year"></span> Morrow. All rights reserved. Made with care.
+                </div>
             </div>
-        </div>
-    </footer>
+        </footer>
+
+    </div><!-- /#siteContent -->
 
     <!-- ===== SCRIPT ===== -->
     <script>
         // ============================================================
-        // DATA
+        // AUTH GATE — credentials: saikiran / 12345
+        // ============================================================
+        const VALID_USERNAME = 'saikiran';
+        const VALID_PASSWORD = '12345';
+
+        const loginGate   = document.getElementById('loginGate');
+        const loginForm   = document.getElementById('loginForm');
+        const loginUser   = document.getElementById('loginUser');
+        const loginPass   = document.getElementById('loginPass');
+        const loginError  = document.getElementById('loginError');
+        const togglePw    = document.getElementById('togglePw');
+        const siteContent = document.getElementById('siteContent');
+
+        // show / hide password
+        togglePw.addEventListener('click', () => {
+            const isPw = loginPass.type === 'password';
+            loginPass.type = isPw ? 'text' : 'password';
+            togglePw.innerHTML = isPw
+                ? '<i class="far fa-eye-slash"></i>'
+                : '<i class="far fa-eye"></i>';
+            togglePw.setAttribute('aria-label', isPw ? 'Hide password' : 'Show password');
+        });
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const user = loginUser.value.trim();
+            const pass = loginPass.value;
+
+            if (user === VALID_USERNAME && pass === VALID_PASSWORD) {
+                // success — reveal site, hide gate
+                loginError.style.display = 'none';
+                loginGate.style.display = 'none';
+                siteContent.classList.add('visible');
+                document.body.style.overflow = '';
+
+                // init the store once visible
+                initStore();
+            } else {
+                loginError.textContent = 'Invalid username or password. Please try again.';
+                loginError.style.display = 'block';
+                loginError.style.animation = 'none';
+                void loginError.offsetWidth;   // re-trigger shake
+                loginError.style.animation = '';
+                loginPass.value = '';
+                loginPass.focus();
+            }
+        });
+
+        // keep page behind gate from scrolling
+        document.body.style.overflow = 'hidden';
+
+        // ============================================================
+        // STORE DATA
         // ============================================================
         const CATEGORIES = [
             { id: 'phones', name: 'Smartphones', icon: 'fa-mobile-screen', count: 24 },
@@ -1092,9 +1346,10 @@
         // STATE
         // ============================================================
         let cartCount = 0;
+        let storeInitialised = false;
 
         // ============================================================
-        // DOM REFS
+        // DOM REFS (store)
         // ============================================================
         const categoriesGrid = document.getElementById('categoriesGrid');
         const productsGrid = document.getElementById('productsGrid');
@@ -1244,7 +1499,7 @@
         // ============================================================
         // DEAL TIMER
         // ============================================================
-        (function setupDealTimer() {
+        function setupDealTimer() {
             const now = new Date();
             const target = new Date(now.getTime() + (24 * 60 + 36) * 60 * 1000);
             function tick() {
@@ -1267,90 +1522,101 @@
             }
             tick();
             setInterval(tick, 1000);
-        })();
+        }
 
         // ============================================================
-        // EVENT BINDINGS
+        // EVENT BINDINGS (store)
         // ============================================================
-        searchBtn.addEventListener('click', () => filterProducts(searchInput.value));
-        searchInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') filterProducts(e.target.value);
-        });
-
-        mobileToggle.addEventListener('click', () => {
-            const isOpen = mobileMenu.style.display === 'block';
-            mobileMenu.style.display = isOpen ? 'none' : 'block';
-            mobileToggle.innerHTML = isOpen ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
-        });
-
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.style.display = 'none';
-                mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        function bindStoreEvents() {
+            searchBtn.addEventListener('click', () => filterProducts(searchInput.value));
+            searchInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') filterProducts(e.target.value);
             });
-        });
 
-        document.getElementById('shopNow').addEventListener('click', () => {
-            document.getElementById('products').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-        document.getElementById('exploreDeals').addEventListener('click', () => {
-            document.getElementById('deals').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
+            mobileToggle.addEventListener('click', () => {
+                const isOpen = mobileMenu.style.display === 'block';
+                mobileMenu.style.display = isOpen ? 'none' : 'block';
+                mobileToggle.innerHTML = isOpen ? '<i class="fas fa-bars"></i>' : '<i class="fas fa-times"></i>';
+            });
 
-        document.getElementById('buyDeal').addEventListener('click', function() {
-            cartCount++;
-            updateCartCount();
-            const orig = this.innerHTML;
-            this.innerHTML = '<i class="fas fa-check"></i> Added!';
-            this.style.background = 'var(--sage)';
-            this.style.borderColor = 'var(--sage)';
-            setTimeout(() => {
-                this.innerHTML = orig;
-                this.style.background = '';
-                this.style.borderColor = '';
-            }, 1600);
-        });
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.style.display = 'none';
+                    mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
 
-        newsletterForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const email = newsletterEmail.value.trim();
-            if (!email || !email.includes('@')) {
-                newsletterMsg.textContent = 'Please enter a valid email address.';
-                newsletterMsg.style.color = '#a4d4b4';
+            document.getElementById('shopNow').addEventListener('click', () => {
+                document.getElementById('products').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+            document.getElementById('exploreDeals').addEventListener('click', () => {
+                document.getElementById('deals').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+
+            document.getElementById('buyDeal').addEventListener('click', function() {
+                cartCount++;
+                updateCartCount();
+                const orig = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-check"></i> Added!';
+                this.style.background = 'var(--sage)';
+                this.style.borderColor = 'var(--sage)';
+                setTimeout(() => {
+                    this.innerHTML = orig;
+                    this.style.background = '';
+                    this.style.borderColor = '';
+                }, 1600);
+            });
+
+            newsletterForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = newsletterEmail.value.trim();
+                if (!email || !email.includes('@')) {
+                    newsletterMsg.textContent = 'Please enter a valid email address.';
+                    newsletterMsg.style.color = '#a4d4b4';
+                    newsletterMsg.style.display = 'block';
+                    return;
+                }
+                newsletterMsg.textContent = '🌿 Thanks for subscribing — welcome to Morrow.';
+                newsletterMsg.style.color = '#b4d4b8';
                 newsletterMsg.style.display = 'block';
-                return;
-            }
-            newsletterMsg.textContent = '🌿 Thanks for subscribing — welcome to Morrow.';
-            newsletterMsg.style.color = '#b4d4b8';
-            newsletterMsg.style.display = 'block';
-            newsletterEmail.value = '';
-            setTimeout(() => {
-                newsletterMsg.style.display = 'none';
-            }, 3500);
-        });
+                newsletterEmail.value = '';
+                setTimeout(() => {
+                    newsletterMsg.style.display = 'none';
+                }, 3500);
+            });
 
-        document.getElementById('cartBtn').addEventListener('click', () => {
-            alert(`🛒 Your cart has ${cartCount} item${cartCount !== 1 ? 's' : ''}.`);
-        });
+            document.getElementById('cartBtn').addEventListener('click', () => {
+                alert(`🛒 Your cart has ${cartCount} item${cartCount !== 1 ? 's' : ''}.`);
+            });
 
-        document.getElementById('year').textContent = new Date().getFullYear();
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    mobileMenu.style.display = 'none';
+                    mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        }
 
         // ============================================================
-        // INIT
+        // INIT STORE (runs only after successful login)
         // ============================================================
-        renderCategories();
-        renderProducts(PRODUCTS);
-        renderTestimonials();
-        updateCartCount();
+        function initStore() {
+            if (storeInitialised) return;
+            storeInitialised = true;
 
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
-                mobileMenu.style.display = 'none';
-                mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
-            }
-        });
+            renderCategories();
+            renderProducts(PRODUCTS);
+            renderTestimonials();
+            updateCartCount();
+            setupDealTimer();
+            bindStoreEvents();
 
-        console.log('🌿 Morrow — a calmer commerce experience loaded (green edition).');
+            document.getElementById('year').textContent = new Date().getFullYear();
+            console.log('🌿 Morrow — a calmer commerce experience loaded (green edition, authenticated).');
+        }
+
+        // focus username on load
+        loginUser.focus();
     </script>
 
 </body>
